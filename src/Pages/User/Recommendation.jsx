@@ -8,13 +8,13 @@ import { ReactComponent as LeafLogoShadow } from '../../Assets/img/logo/leafLogo
 
 const Recommendation = (props) => {
     const history = useHistory();
-    const recommend = useSelector(state => state.label?.recommend);
-    const plantId = recommend?.plantId;
-    const plantName = recommend?.plantName;
-    const plantImgUrl = recommend?.plantImgUrl;
-    const result = recommend?.result;
+    const recommend = useSelector(state => state.label.recommend);
+    const plantId = recommend.plantId;
+    const plantName = recommend.plantName;
+    const plantImgUrl = recommend.plantImgUrl;
+    const result = recommend.result;
 
-  if(!plantName || !plantImgUrl) {
+  if(!plantName) {
     return (
       <>
         <Container>

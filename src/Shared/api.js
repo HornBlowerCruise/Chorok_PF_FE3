@@ -1,16 +1,48 @@
 import axios from 'axios';
-axios.defaults.withCredentials = true;
+import { useHistory } from 'react-router-dom';
 
+axios.defaults.withCredentials = true;
 
 // 서버 주소
 const api = axios.create({
-  // baseURL: 'http://15.165.160.67',// local 1
-  // baseURL: 'http://121.141.140.148:8085', // local 2 
-  baseURL: 'https://chorok.shop', // https
+  baseURL: 'http://localhost:8080',// local 1
+  // baseURL: 'https://chorok.shop', // https
   
 }, { withCredentials: true } //CORS error 방지
 );
 
+// Add a request interceptor
+api.interceptors.request.use(function (config) {
+  // Do something before request is sent
+  // console.log("request start", config)
+  return config;
+}, function (error) {
+  // Do something with request error
+  // console.log("requesterror", error)
+  return Promise.reject(error);
+});
+
+// Add a response interceptor
+api.interceptors.response.use(function (response) {
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  // Do something with response data
+  console.log("get response", response)
+  console.log("get response", response.data)
+  return response;
+}, function (error) {
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  // Do something with response error
+  // console.log("response error", error)
+  // const history = useHistory();
+  if(error.response.status===403 || error.response.status===401 || error.response.status===494 || error.response.status===495 || error.response.status===496){
+    alert("로그인 세션이 만료되었습니다.")
+    localStorage.removeItem('token');
+    localStorage.removeItem('nickname');
+    window.location.reload();
+    // history.push('');
+  }
+  return Promise.reject(error);
+});
 
 // 유저정보 관련 API
 export const userAPI = {

@@ -334,17 +334,27 @@ const SignUp = () => {
                 <Text weight="700">초록 가입을 환영합니다👍</Text>
               </Grid>
               <Grid margin="auto" align="center">
-                <Text size="small">아래의 메일로 인증 메일을 전송하였습니다. <br />전송된 메일에서 링크를 클릭하면 <br />회원가입이 완료됩니다.</Text>
+                {/* <Text size="small">아래의 메일로 인증 메일을 전송하였습니다. <br />전송된 메일에서 링크를 클릭하면 <br />회원가입이 완료됩니다.</Text> */}
+                <Text size="small">홈에서 로그인을 진행해주세요.</Text>
                 <Grid margin="20px 0px 16px 0px" bg="#F7F8FA" width="100%" height="48px" borderRadius="6px" align="center" is_flex>
                   <Text>{userEmail}</Text>
                 </Grid>
-                <Grid margin="auto"
+                {/* <Grid margin="auto"
                   _onClick={() => { 
                     dispatch(userActions.signUpDB(userEmail, password, nickname, profileImgUrl)); 
                     setOpen(true); 
                     setMessage("인증메일을 재발송하였습니다."); 
                     console.log(open);}}>
                   <p style={{color: "#8D8D8D", fontSize: "13px", borderBottom: "1px solid #8D8D8D"}}> 인증메일 재발송 </p>
+                </Grid> */}
+                <Grid margin="auto"
+                  _onClick={() => { 
+                    history.push('');
+                    // dispatch(userActions.signUpDB(userEmail, password, nickname, profileImgUrl)); 
+                    // setOpen(true); 
+                    // setMessage("인증메일을 재발송하였습니다."); 
+                    console.log(open);}}>
+                  <p style={{color: "#8D8D8D", fontSize: "13px", borderBottom: "1px solid #8D8D8D"}}> 홈으로 </p>
                 </Grid>
               </Grid>
             </Grid>
