@@ -202,7 +202,7 @@ const deactivateUserDB = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("nickname");
         localStorage.removeItem("username");
-        history.push('/');
+        history.push('/home');
         window.location.reload();
       }).catch((error) => {
         console.log("deactivate : error", error.response);
