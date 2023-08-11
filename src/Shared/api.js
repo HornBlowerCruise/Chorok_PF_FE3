@@ -5,8 +5,8 @@ axios.defaults.withCredentials = true;
 
 // 서버 주소
 const api = axios.create({
-  baseURL: 'http://localhost:8080',// local 1
-  // baseURL: 'https://chorok.shop', // https
+  // baseURL: 'http://localhost:8080',// local 1
+  baseURL: 'https://kagomepizza-ragtime.shop', // https
   
 }, { withCredentials: true } //CORS error 방지
 );
