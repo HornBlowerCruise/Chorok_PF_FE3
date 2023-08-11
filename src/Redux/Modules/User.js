@@ -156,7 +156,7 @@ const logOutDB = () => {
         localStorage.removeItem("nickname");
         localStorage.removeItem("username");
         dispatch(logOut());
-        history.push('/');  
+        history.push('/home');  
         window.location.reload();
       }
       ).catch((error) => {
